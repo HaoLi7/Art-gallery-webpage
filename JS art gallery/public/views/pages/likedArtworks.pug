@@ -1,0 +1,20 @@
+doctype html
+html(lang="en")
+    if session && session.loggedin
+        title Liked Artworks - #{session.username}
+        link(rel="stylesheet" href="../css/styles.css")
+        body
+            include ../partials/header
+            h1 Liked Artworks
+            div#artworks
+                each val in artworks
+                    div(id=val._id)
+                        a(href="/artworks/"+val._id) #{val.name}
+                        | 
+                        input#unlike(type="button",value="Unlike")
+                        br
+                        a(href=val.image)
+                            img(src=val.image,alt="Artwork: "+val.name,width="30%")
+                    br
+            script(src="../js/likedArtworks.js",type="text/javascript")
+    include ../partials/unauthorized

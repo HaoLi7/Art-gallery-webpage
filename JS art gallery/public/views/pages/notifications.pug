@@ -1,0 +1,13 @@
+doctype html
+html(lang="en")
+    if session && session.loggedin
+        title Notifications - #{session.username}
+        link(rel="stylesheet" href="../css/styles.css")
+        body
+            include ../partials/header
+            h1 Notifications: 
+            each val in notifications
+                h3 From: #{val.from}
+                each note in val.content
+                    p #{note}
+    include ../partials/unauthorized

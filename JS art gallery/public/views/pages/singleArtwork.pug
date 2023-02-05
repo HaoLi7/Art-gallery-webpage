@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+    if session && session.loggedin
+        title #{artwork.name} - #{session.username}
+        link(rel="stylesheet" href="../css/styles.css")
+        body
+            include ../partials/header
+            br
+            h1 #{artwork.name}
+                | 
+                input#likeButton(type="image",src="../like.png",alt="Like button",width="2%",value=artwork._id)
+                | 
+                label(id=artwork._id) #{artwork.likeNum}
+            div(class="img")
+                a(href=artwork.image)
+                    img(src=artwork.image,alt="Artwork: "+artwork.name,width="30%")
+            div(class="info")
+                a(href="/artists/"+artistId) Artist: #{artwork.artist}
+                br
+                p Year: #{artwork.year}
+                p Category: #{artwork.category}
+                p Medium: #{artwork.medium}
+                p #{artwork.description}
+            script(src="../js/singleArtwork.js",type="text/javascript")
+    include ../partials/unauthorized

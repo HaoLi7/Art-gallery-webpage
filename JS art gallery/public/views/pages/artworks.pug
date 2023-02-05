@@ -1,0 +1,32 @@
+doctype html
+html(lang="en")
+    if session && session.loggedin
+        title Artwork gallery - #{session.username}
+        link(rel="stylesheet" href="../css/styles.css")
+        body
+            include ../partials/header
+            br
+            label(for="selectMedium") Medium: 
+            select#selectMedium
+                option(value="All") All
+                each val in options.medium
+                    option(value=val) #{val}
+            | 
+            label(for="selectCategory") Category: 
+            select#selectCategory
+                option(value="All") All
+                each val in options.category
+                    option(value=val) #{val}
+            | 
+            input#filter(type="button",value="Filter")
+            h1 Artworks
+            div#artworks
+                each val in artworks
+                    div
+                        a(href="/artworks/"+val._id) #{val.name}
+                        br
+                        a(href=val.image)
+                            img(src=val.image,alt="Artwork: "+val.name,width="30%")
+                    br
+            script(src="../js/artworks.js",type="text/javascript")
+    include ../partials/unauthorized

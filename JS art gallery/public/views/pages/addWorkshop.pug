@@ -1,0 +1,23 @@
+doctype html
+html(lang="en")
+    if session && session.loggedin
+        title Add a workshop - #{session.username}
+        link(rel="stylesheet" href="../css/styles.css")
+        body
+            include ../partials/header
+            h3 Add a workshop
+            label(for="topic") Topic: 
+            input#topic(type="text")
+            br
+            br
+            label(for="date") Date: 
+            input#date(type="text")
+            br
+            br
+            label(for="location") Location: 
+            input#location(type="text")
+            br
+            br
+            input#submit(type="submit",value="Submit",onclick="submit()")
+            script(src="../js/addWorkshop.js",type="text/javascript")
+    include ../partials/unauthorized

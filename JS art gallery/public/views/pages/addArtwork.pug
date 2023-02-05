@@ -1,0 +1,39 @@
+doctype html
+html(lang="en")
+    if session && session.loggedin
+        title Add an artwork - #{session.username}
+        link(rel="stylesheet" href="../css/styles.css")
+        body
+            include ../partials/header
+            h3 Add an artwork
+            label(for="name") Artwork name: 
+            input#name(type="text")
+            br
+            br
+            label(for="artist") Artist name: 
+            input#artist(type="text")
+            br
+            br
+            label(for="year") Year: 
+            input#year(type="text")
+            br
+            br
+            label(for="category") Category: 
+            input#category(type="text")
+            br
+            br
+            label(for="medium") Medium: 
+            input#medium(type="text")
+            br
+            br
+            label(for="description") Description: 
+            input#description(type="text")
+            br
+            br
+            label(for="image") Image link: 
+            input#image(type="text",name="image",required)
+            br
+            br
+            input#submit(type="submit",value="Submit",onclick="submit()")
+            script(src="../js/addArtwork.js",type="text/javascript")
+    include ../partials/unauthorized

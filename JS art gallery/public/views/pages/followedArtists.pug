@@ -1,0 +1,15 @@
+doctype html
+html(lang="en")
+    if session && session.loggedin
+        title All followed artists - #{session.username}
+        link(rel="stylesheet" href="../css/styles.css")
+        body
+            include ../partials/header
+            h1 All the artists you followed: 
+            each val, key in artists
+                a(href="/artists/"+val._id) #{val.name}
+                | 
+                input(type="button",class="unfollow",value="Unfollow",id=`${val._id}`)
+                br
+            script(src="../js/followedArtists.js",type="text/javascript")
+    include ../partials/unauthorized

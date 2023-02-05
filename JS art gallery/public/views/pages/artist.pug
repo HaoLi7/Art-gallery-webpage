@@ -1,0 +1,30 @@
+doctype html
+html(lang="en")
+    if session && session.loggedin
+        title Artist: #{artist.name} - #{session.username}
+        link(rel="stylesheet" href="../css/styles.css")
+        body
+            include ../partials/header
+            br
+            h1 #{artist.name}
+                | 
+                input#follow(type="button",value="Follow")
+            div#artworks
+                h3 Artworks:
+                each val in artist.artworks
+                    a(href="/artworks/"+val.id) #{val.artworkName}
+                    br
+            div#workshops
+                h3 Workshops:
+                - let count = 1;
+                each val in workshops
+                    p #{count}. 
+                    p Topic: #{val.topic}
+                        | 
+                        input#enrollWorkshop(type="button",value="Eroll")
+                    p Date: #{val.date}
+                    p Location: #{val.location}
+                    - count++;
+                    br
+            script(src="../js/artist.js",type="text/javascript")
+    include ../partials/unauthorized

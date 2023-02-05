@@ -1,0 +1,29 @@
+doctype html
+html(lang="en")
+    if session && !session.loggedin
+        title Welcome!
+        link(rel="stylesheet" href="../css/styles.css")
+        body
+            h1 Welcome! 
+            h3 Please log in! 
+            p If you don't have an account, please enter your registration information and click "Create account"
+            div#userAccountForm 
+                label(for="userName") Username: 
+                input#userName(type="text")
+                br
+                label(for="password") Password: 
+                input#password(type="password")
+                br
+                input#login(type="button",value="Log in")
+                |
+                |
+                |
+                input#signup(type="button",value="Sign up")
+                script(src="../js/homePage.js",type="text/javascript")
+    if session && session.loggedin
+        title Welcome #{session.username}!
+        link(rel="stylesheet" href="../css/styles.css")
+        body
+            include ../partials/header
+            h3 Welcome #{session.username}!
+            p Plesa navigate via links above

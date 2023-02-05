@@ -1,0 +1,24 @@
+div#header
+    a(href="/") Home
+    | 
+    a(href="/artworks") Artworks
+    | 
+    a(href="/artists/followed") All followed artists
+    |   
+    a(href="/artworks/liked") All liked artworks
+    |   
+    a(href="/notifications") Notifications
+    |   
+    a(href="/artworks/search") Search for artworks
+    |      
+    if session && session.patron
+        input#switch(type="button",value="Switch to artist account")
+    if session && !session.patron
+        a(href="/artworks/add") Add artwork
+        | 
+        a(href="/workshops/add") Add workshop
+        | 
+        input#switch(type="button",value="Switch to patron account")
+    |   
+    input#logout(type="button",value="Log out")
+    script(src="../js/header.js",type="text/javascript")
